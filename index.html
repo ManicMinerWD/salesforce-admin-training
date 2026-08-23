@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Salesforce Identity &amp; Security Administration — Training</title>
+<title>Salesforce Platform Administrator — Training</title>
 <style>
   :root{
     --bg:#0f1424; --panel:#172033; --ink:#e8edf7; --muted:#9aa7c0;
@@ -15,44 +15,41 @@
   body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     background:var(--bg);color:var(--ink);line-height:1.6}
   a{color:var(--accent)}
-  /* layout */
   .app{display:flex;min-height:100vh}
-  /* sidebar */
-  .side{width:300px;flex:0 0 300px;background:var(--panel);border-right:1px solid var(--line);
+  .side{width:320px;flex:0 0 320px;background:var(--panel);border-right:1px solid var(--line);
     display:flex;flex-direction:column;position:sticky;top:0;height:100vh;overflow-y:auto}
-  .side h2{font-size:.95rem;margin:0;padding:18px 18px 12px;border-bottom:1px solid var(--line)}
-  .course-meta{font-size:.75rem;color:var(--muted);padding:8px 18px 14px;border-bottom:1px solid var(--line)}
+  .side h2{font-size:.92rem;margin:0;padding:18px 18px 12px;border-bottom:1px solid var(--line)}
+  .course-meta{font-size:.74rem;color:var(--muted);padding:8px 18px 14px;border-bottom:1px solid var(--line)}
   .bar{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin-top:8px}
   .bar > i{display:block;height:100%;background:var(--done);width:0;transition:width .3s}
   .sec{border-bottom:1px solid var(--line)}
-  .sec > .sec-head{padding:12px 18px;font-weight:600;font-size:.85rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+  .sec > .sec-head{padding:12px 18px;font-weight:600;font-size:.83rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
   .sec > .sec-head:hover{background:rgba(255,255,255,.03)}
   .lessons{list-style:none;margin:0;padding:0 0 6px}
-  .lesson{padding:9px 18px 9px 34px;font-size:.84rem;color:var(--muted);cursor:pointer;display:flex;gap:9px;align-items:center}
+  .lesson{padding:9px 18px 9px 34px;font-size:.82rem;color:var(--muted);cursor:pointer;display:flex;gap:9px;align-items:center}
   .lesson:hover{background:rgba(255,255,255,.03);color:var(--ink)}
   .lesson.active{background:rgba(0,161,224,.12);color:var(--ink);border-left:3px solid var(--accent);padding-left:31px}
   .lesson .dot{width:14px;height:14px;border-radius:50%;border:2px solid var(--line);flex:0 0 auto;font-size:.6rem;display:flex;align-items:center;justify-content:center}
   .lesson.done .dot{background:var(--done);border-color:var(--done);color:#06281f}
   .lesson .ttl{flex:1}
-  /* main */
   .main{flex:1;min-width:0;display:flex;flex-direction:column}
   .topbar{padding:14px 26px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:var(--bg);z-index:5}
   .topbar .crumbs{font-size:.8rem;color:var(--muted)}
   .topbar .crumbs b{color:var(--ink)}
-  .content{padding:26px 34px 60px;max-width:900px}
-  .content h1{font-size:1.7rem;margin:0 0 4px}
+  .content{padding:26px 34px 60px;max-width:920px}
+  .content h1{font-size:1.6rem;margin:0 0 4px}
   .content .lede{color:var(--muted);margin:0 0 22px}
-  .content h2{font-size:1.2rem;margin:30px 0 10px;border-left:3px solid var(--accent);padding-left:10px}
+  .content h2{font-size:1.15rem;margin:28px 0 10px;border-left:3px solid var(--accent);padding-left:10px}
   .content p{margin:10px 0}
   .content ul{margin:10px 0;padding-left:22px} .content li{margin:5px 0}
+  .content code{background:#0b1120;padding:1px 6px;border-radius:5px;font-size:.85em;color:var(--accent2)}
   .callout{border:1px solid var(--line);border-left:3px solid var(--warn);background:rgba(245,158,11,.08);padding:12px 16px;border-radius:8px;margin:16px 0;font-size:.9rem}
   .callout.tip{border-left-color:var(--accent2);background:rgba(30,201,167,.08)}
-  /* video slot */
+  .callout.exam{border-left-color:var(--accent);background:rgba(0,161,224,.08)}
   .video-slot{margin:18px 0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#05070f}
-  .video-slot .player{position:relative;width:100%;aspect-ratio:16/9;background:#05070f;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.9rem;text-align:center;padding:20px}
+  .video-slot .player{position:relative;width:100%;aspect-ratio:16/9;background:#05070f;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.88rem;text-align:center;padding:20px}
   .video-slot video{width:100%;display:block}
   .video-slot .cap{padding:10px 14px;font-size:.78rem;color:var(--muted);border-top:1px solid var(--line)}
-  /* diagram */
   .diagram{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
   .diagram svg{max-width:100%;height:auto;display:block;margin:0 auto}
   .diagram .dlabel{font-size:.78rem;color:var(--muted);text-align:center;margin-top:8px}
@@ -64,6 +61,7 @@
   .complete-row label{font-size:.9rem;display:flex;gap:8px;align-items:center;cursor:pointer}
   .complete-row input{width:18px;height:18px}
   .footer{margin-top:30px;color:var(--muted);font-size:.78rem;text-align:center;padding:20px}
+  .weight{font-size:.7rem;color:var(--muted);font-weight:400}
   @media(max-width:760px){ .side{position:fixed;left:0;top:0;z-index:20;transform:translateX(-100%);transition:.25s} .side.open{transform:none} .content{padding:18px} }
   .menu-btn{display:none;background:transparent;border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:6px 10px;cursor:pointer}
   @media(max-width:760px){ .menu-btn{display:inline-block} }
@@ -72,15 +70,14 @@
 <body>
 <div class="app">
   <aside class="side" id="side">
-    <h2>Salesforce Identity &amp; Security</h2>
+    <h2>Salesforce Platform Administrator</h2>
     <div class="course-meta">
-      Administrator track &middot; Identity &amp; Access module
+      Full CRT-101 exam scope &middot; 8 domains
       <div class="bar"><i id="progbar"></i></div>
       <span id="progtext" style="display:block;margin-top:6px">0 / 0 lessons complete</span>
     </div>
     <div id="curriculum"></div>
   </aside>
-
   <div class="main">
     <div class="topbar">
       <button class="menu-btn" id="menuBtn">&#9776; Curriculum</button>
@@ -88,218 +85,569 @@
       <div style="font-size:.78rem;color:var(--muted)" id="lessonCount"></div>
     </div>
     <div class="content" id="content"></div>
-    <div class="footer">Self-made training companion to the Salesforce Platform Administrator exam (CRT-101). Not official Salesforce training. Pair with the official <a href="https://help.salesforce.com/s/articleView?id=005298966" target="_blank" rel="noopener">Exam Guide</a> and Trailhead.</div>
+    <div class="footer">Self-made study companion to the Salesforce Certified Platform Administrator (CRT-101) exam. Not official Salesforce training. Pair with Trailhead and the official <a href="https://help.salesforce.com/s/articleView?id=005298966" target="_blank" rel="noopener">Exam Guide</a>.</div>
   </div>
 </div>
-
 <script>
 /* ---------------- Course data ---------------- */
 const COURSE = {
-  title:"Salesforce Identity & Security Access",
+  title:"Salesforce Platform Administrator",
   sections:[
     {
-      title:"1. Course Introduction",
+      title:"1. Configuration & Setup (15%)",
       lessons:[
-        { id:"intro", title:"Welcome & learning map",
-          lede:"What identity & security administration covers on the Platform Administrator exam, and how this module is structured.",
-          video:{cap:"Module intro — the layered access model at a glance (video slot ready)."},
+        { id:"overview", title:"Exam overview & admin role",
+          lede:"How the Platform Administrator exam is structured and what an admin actually does day to day.",
+          video:{cap:"CRT-101 at a glance — 60 questions, 105 min, 68% to pass (video slot ready)."},
           body:`
-          <h2>Why identity &amp; security matters on the exam</h2>
-          <p>Salesforce groups user management, security, and access control under the
-          <b>Configuration and Setup</b> (15%) and <b>Security</b> areas of the Platform Administrator exam.
-          You are expected to <b>evaluate and configure</b> how users authenticate, what they can see,
-          and what they can do.</p>
-          <div class="callout"><b>Exam framing:</b> the questions rarely ask "what is a profile?" — they ask
-          "a user needs X but not Y; which combination of profile, permission set, and sharing achieves it?"</div>
-          <h2>The layered access model</h2>
+          <h2>The exam</h2>
           <ul>
-            <li><b>Authentication</b> — who can log in (users, passwords, MFA, login IP/hours).</li>
-            <li><b>Authorization — what they can do</b> — profiles (baseline) + permission sets (add-ons).</li>
-            <li><b>Record visibility — what they can see</b> — roles, org-wide defaults, sharing rules.</li>
-          </ul>`
-        }
-      ]
-    },
-    {
-      title:"2. Users & Authentication",
-      lessons:[
-        { id:"users", title:"Users, passwords & login policies",
-          lede:"Creating users, password/lockout policy, and restricting when/where people can log in.",
-          video:{cap:"Creating a user and setting login hours + IP ranges (video slot ready)."},
+            <li><b>60</b> multiple-choice questions (≈5 unscored), <b>105 minutes</b>, passing score <b>68%</b>.</li>
+            <li>Covers 8 domains — see the curriculum. No hands-on; scenario-based multiple choice.</li>
+          </ul>
+          <div class="callout exam"><b>Weighting matters:</b> Data &amp; Analytics (17%) and Configuration/Setup (15%) and Automation (15%) and Object Manager (15%) are the heavy four. Agentforce (8%) is newest and smallest.</div>
+          <h2>What an admin does</h2>
+          <p>An admin configures the org: users &amp; security, objects &amp; fields, automation, reports, and data. You are the person who makes the platform fit the business without writing code.</p>`
+        },
+        { id:"users", title:"Users, authentication & MFA",
+          lede:"Creating users, password/lockout policy, login hours/IP, and enforcing MFA.",
+          video:{cap:"Creating a user and enforcing MFA + login policy (video slot ready)."},
           body:`
           <h2>User records</h2>
-          <p>A <b>user</b> is a login identity. Each user has a profile (their baseline permissions) and
-          belongs to a role (their place in the record-sharing hierarchy). When someone leaves, you
-          <b>deactivate</b> the user and reassign their records — you do not delete users.</p>
-          <div class="callout tip"><b>Rule of thumb:</b> never delete a user. Deactivation freezes access and
-          preserves historical ownership of records.</div>
-          <h2>Password &amp; lockout policy</h2>
+          <p>A <b>user</b> is a login identity with a profile and a role. When someone leaves, <b>deactivate</b> and reassign records — never delete a user.</p>
+          <div class="callout tip"><b>Rule:</b> never delete a user. Deactivation freezes access and preserves record history.</div>
+          <h2>Login controls</h2>
           <ul>
-            <li>Set password complexity, expiry, and lockout attempts org-wide.</li>
-            <li>Admins can <b>reset password</b> and <b>unlock</b> a user from the user record.</li>
-          </ul>
-          <h2>Controlling login time &amp; location</h2>
-          <ul>
-            <li><b>Login Hours</b> — restrict the window a user can log in (e.g. 9–5).</li>
-            <li><b>Login IP Ranges</b> — allow logins only from trusted networks; outside ranges require a
-            activation or are blocked depending on policy.</li>
-            <li><b>Multi-Factor Authentication (MFA)</b> — enforce via permission set / session settings.</li>
+            <li><b>Password/lockout policy</b> — complexity, expiry, lockout attempts (org-wide).</li>
+            <li><b>Login Hours</b> — restrict when users can log in.</li>
+            <li><b>Login IP Ranges</b> — trusted networks only.</li>
+            <li><b>MFA</b> — required for all UI users; enforce via the MFA Enforcement permission set or Session Settings.</li>
           </ul>
           ${diagramLogin()}`
         },
-        { id:"mfa", title:"Multi-Factor Authentication (MFA)",
-          lede:"Why MFA is mandatory and how it is enforced for admins and users.",
-          video:{cap:"Enforcing MFA through a permission set (video slot ready)."},
+        { id:"profiles", title:"Profiles & permission sets",
+          lede:"The baseline (profile) vs additive (permission set) model of what users can do.",
+          video:{cap:"Profile vs permission set layering (video slot ready)."},
           body:`
-          <h2>MFA is required</h2>
-          <p>Salesforce requires MFA for all users accessing the UI. As an admin you enforce it with a
-          <b>permission set</b> (e.g. the standard "MFA Enforcement" permission set) or via
-          <b>Session Security Policies</b>.</p>
-          <div class="callout"><b>Watch the exam wording:</b> "How do you require MFA?" &rarr; assign the MFA
-          Enforcement permission set (or set it in session settings) — not a profile field toggle alone.</div>
+          <h2>Profile = baseline</h2>
           <ul>
-            <li>MFA factors: Salesforce Authenticator app, third-party TOTP apps, security keys.</li>
-            <li>Session settings also control <b>session timeout</b> and <b>IP relaxations</b>.</li>
+            <li>Object permissions (CRUD), field-level security (FLS), tab visibility, app visibility, page layouts, record types, login policy.</li>
+            <li>One profile per user.</li>
+          </ul>
+          <h2>Permission set = additive</h2>
+          <p>Grants extra rights on top of the profile. Many per user. <b>Permission set groups</b> bundle several for easier assignment.</p>
+          <div class="callout exam"><b>Pattern:</b> keep the profile as the job baseline; grant exceptions with permission sets. Don't clone profiles for small differences.</div>
+          ${diagramAccess()}`
+        },
+        { id:"sharing", title:"Roles, OWD & sharing",
+          lede:"How record visibility is controlled — the most-tested access topic.",
+          video:{cap:"Role hierarchy, OWD, and sharing rules (video slot ready)."},
+          body:`
+          <h2>Roles = what you can see</h2>
+          <p>Roles sit in a <b>hierarchy</b>; a user sees records owned by themselves and everyone <b>below</b> them. Roles do NOT grant object permissions.</p>
+          <h2>Org-Wide Defaults (OWD) = baseline</h2>
+          <p>The most restrictive default (Private / Public Read Only / Public Read/Write). Everything else only <b>opens up</b> from here.</p>
+          <h2>Sharing rules</h2>
+          <p>Grant access beyond OWD based on <b>ownership</b> or <b>criteria</b>. Never make things more private. Manual share &amp; teams handle one-off/collaborative access.</p>
+          ${diagramRoles()}${diagramSharing()}`
+        },
+        { id:"company", title:"Company settings, fiscal year & currency",
+          lede:"Org-wide configuration: company info, fiscal year, and multi-currency.",
+          video:{cap:"Setting fiscal year and enabling multi-currency (video slot ready)."},
+          body:`
+          <h2>Company Information</h2>
+          <ul>
+            <li>Edition, licenses, instance, org ID, and <b>language/locale</b> defaults.</li>
+            <li>Storage limits; the <b>default currency</b> for the org.</li>
+          </ul>
+          <h2>Fiscal Year</h2>
+          <p>Customize the fiscal year (standard Jan–Dec or a custom start). Affects forecasting and date-based reports/dashboards.</p>
+          <h2>Currency</h2>
+          <ul>
+            <li><b>Multi-currency</b> lets records use different currencies; requires activation (can't be turned off).</li>
+            <li><b>Advanced Currency Management</b> (dated exchange rates) requires multi-currency first.</li>
+          </ul>
+          <div class="callout exam"><b>Gotcha:</b> multi-currency, once enabled, cannot be disabled. Activate deliberately.</div>`
+        },
+        { id:"deploy", title:"Audit trail, sandboxes & deployment",
+          lede:"Track changes and move them between environments.",
+          video:{cap:"Setup Audit Trail and deploying with change sets (video slot ready)."},
+          body:`
+          <h2>Setup Audit Trail</h2>
+          <p>Logs configuration changes (who changed what, when) for up to a year. Use it to investigate "who changed this setting?"</p>
+          <h2>Sandboxes &amp; deployment</h2>
+          <ul>
+            <li><b>Sandboxes</b> are copies of the org for dev/test (Developer, Partial, Full, etc.).</li>
+            <li><b>Change Sets</b> move metadata (not data) from sandbox to prod, sent between linked orgs.</li>
+            <li><b>AppExchange / packages</b> also distribute customizations.</li>
+          </ul>
+          <div class="callout tip">Change sets deploy <b>metadata</b>. For bulk data, use Data Loader (see Data &amp; Analytics).</div>`
+        }
+      ]
+    },
+    {
+      title:"2. Object Manager & Lightning App Builder (15%)",
+      lessons:[
+        { id:"objects", title:"Objects, fields & field types",
+          lede:"Standard vs custom objects and the field types you configure most.",
+          video:{cap:"Creating a custom object and fields (video slot ready)."},
+          body:`
+          <h2>Standard vs custom</h2>
+          <p><b>Standard</b> objects (Account, Contact, Opportunity, Case, Lead) come with the platform. <b>Custom</b> objects hold business-specific data (named with <code>__c</code>).</p>
+          <h2>Common field types</h2>
+          <ul>
+            <li>Text, Text Area (Long/Rich), Number, Currency, Percent, Date/DateTime.</li>
+            <li>Picklist (single/multi), Checkbox, Lookup (relationship), Formula, Roll-Up Summary.</li>
+            <li><b>External ID</b> fields help with data integration/upserts.</li>
+          </ul>
+          <div class="callout exam"><b>Remember:</b> you can't convert a standard field to a custom one, and some standard fields are locked.</div>`
+        },
+        { id:"rel", title:"Relationships (lookup, master-detail, many-to-many)",
+          lede:"How objects connect — the backbone of a good data model.",
+          video:{cap:"Lookup vs master-detail relationships (video slot ready)."},
+          body:`
+          <h2>Lookup relationship</h2>
+          <p>Loose link between objects. Child can stand alone; no cascade delete; optionally enforces lookup filters.</p>
+          <h2>Master-Detail</h2>
+          <p>Tight coupling: child <b>cannot exist without</b> the parent, inherits parent's <b>sharing</b>, and supports <b>roll-up summary</b> fields. Deleting parent deletes children.</p>
+          <h2>Many-to-many</h2>
+          <p>Modeled with a <b>junction object</b> that has two master-detail relationships (e.g. Students ↔ Classes via Enrollments).</p>
+          ${diagramRelationships()}`
+        },
+        { id:"formula", title:"Formula & roll-up summary fields",
+          lede:"Calculated values without code — same-row formulas and cross-record roll-ups.",
+          video:{cap:"Building a formula field and a roll-up summary (video slot ready)."},
+          body:`
+          <h2>Formula field</h2>
+          <p>Read-only, computes a value from the <b>same record</b> (and related parent fields) using operators, functions, and IF/CASE logic. Examples: <code>Discount %</code>, <code>Full Name</code>, <code>Tier</code> by value.</p>
+          <h2>Roll-Up Summary field</h2>
+          <p>Only on the <b>master</b> of a master-detail relationship. Aggregates child records: SUM, COUNT, MIN, MAX of a child field. Requires master-detail (not lookup).</p>
+          <div class="callout exam"><b>Key difference:</b> formula = same-row calc; roll-up = aggregate of <b>related</b> (child) records; needs master-detail.</div>
+          ${diagramFormula()}`
+        },
+        { id:"vr", title:"Validation rules",
+          lede:"Prevent bad data at save time with formulas that must be false to save.",
+          video:{cap:"Writing a validation rule (video slot ready)."},
+          body:`
+          <h2>How they work</h2>
+          <p>A validation rule is a <b>formula that returns TRUE when the save should be blocked</b>. The error message and placement are configured. Common uses: required fields under conditions, valid ranges, format checks.</p>
+          <ul>
+            <li>Use <code>ISNEW()</code>, <code>ISCHANGED()</code>, <code>PRIORVALUE()</code> for context-aware rules.</li>
+            <li>Validation runs in the <b>order of execution</b> before the record commits.</li>
+          </ul>
+          <div class="callout tip">Validation rules enforce data quality at the platform level — more reliable than training alone.</div>`
+        },
+        { id:"rt", title:"Record types & business processes",
+          lede:"Offer different picklists, pages, and stages to different users/lines of business.",
+          video:{cap:"Record types for Sales vs Support processes (video slot ready)."},
+          body:`
+          <h2>Record types</h2>
+          <p>Let one object support <b>different business processes</b> by varying the available picklist values and page layout. E.g. a "Hardware" vs "Software" case type with different fields.</p>
+          <h2>Business processes</h2>
+          <ul>
+            <li><b>Sales processes</b> — which Opportunity stages are available.</li>
+            <li><b>Support processes</b> — which Case status values are available.</li>
+            <li><b>Lead processes</b> — which Lead statuses.</li>
+          </ul>
+          <div class="callout exam"><b>Link:</b> a record type is associated with a business process and a page layout via the profile.</div>`
+        },
+        { id:"pagelayout", title:"Page layouts & actions",
+          lede:"Control what users see and can do on a record detail page.",
+          video:{cap:"Building a page layout with related lists and actions (video slot ready)."},
+          body:`
+          <h2>Page layouts</h2>
+          <p>Define the fields, sections, related lists, and <b>buttons/actions</b> shown on a record. Assigned per object + record type + profile (via profile or permission set).</p>
+          <h2>Actions</h2>
+          <ul>
+            <li><b>Object-specific quick actions</b> (e.g. "New Contact" on an Account).</li>
+            <li><b>Global actions</b> available anywhere.</li>
+            <li><b>Mobile &amp; Lightning actions</b> appear in the mobile app / Experience.</li>
+          </ul>`
+        },
+        { id:"appbuilder", title:"Lightning App Builder",
+          lede:"Assemble custom pages and apps from components without code.",
+          video:{cap:"Composing a Lightning app page in App Builder (video slot ready)."},
+          body:`
+          <h2>What it does</h2>
+          <p>Drag-and-drop <b>components</b> onto <b>page types</b>: App pages, Home pages, Record pages, and Embedded Service pages. Assign to apps, profiles, and form factors (desktop/mobile/phone).</p>
+          <h2>Components</h2>
+          <ul>
+            <li>Standard (List, Related List, Rich Text, Chart, Path, etc.).</li>
+            <li><b>Custom</b> components from managed packages / AppExchange.</li>
+            <li>Dynamic forms &amp; dynamic interactions personalize by record/context.</li>
+          </ul>
+          <div class="callout exam"><b>Exam angle:</b> App Builder is where you control the Lightning Experience UI — not code, declarative configuration.</div>`
+        }
+      ]
+    },
+    {
+      title:"3. Sales & Marketing Applications (10%)",
+      lessons:[
+        { id:"lead", title:"Leads & lead management",
+          lede:"Capturing and qualifying inbound interest before it becomes an opportunity.",
+          video:{cap:"Web-to-Lead and lead conversion (video slot ready)."},
+          body:`
+          <h2>Leads</h2>
+          <p>A <b>Lead</b> is an unqualified prospect. <b>Lead conversion</b> turns a qualified lead into an Account, Contact, and (optionally) Opportunity.</p>
+          <h2>Capture &amp; qualify</h2>
+          <ul>
+            <li><b>Web-to-Lead</b> generates Lead records from website forms.</li>
+            <li><b>Lead scoring</b> (Einstein) predicts conversion likelihood to prioritize.</li>
+            <li><b>Lead assignment rules</b> route new leads to owners/queues.</li>
+          </ul>
+          ${diagramSales()}`
+        },
+        { id:"opp", title:"Accounts, Contacts, Opportunities & sales process",
+          lede:"The core sales objects and how a deal progresses.",
+          video:{cap:"Opportunity stages and sales process (video slot ready)."},
+          body:`
+          <h2>Core objects</h2>
+          <ul>
+            <li><b>Account</b> — the company. <b>Contact</b> — the person at that company.</li>
+            <li><b>Opportunity</b> — a potential deal with Amount, Close Date, and a <b>Stage</b>.</li>
+          </ul>
+          <h2>Sales process</h2>
+          <p>The set of <b>stages</b> an Opportunity moves through (e.g. Prospecting → Qualification → Proposal → Closed Won/Lost). Driven by the Opportunity's record type + sales process.</p>
+          <div class="callout exam"><b>Watch:</b> "which stages can a rep pick?" is controlled by the sales process tied to the Opportunity record type.</div>`
+        },
+        { id:"products", title:"Products, price books & quotes",
+          lede:"Modeling what you sell and at what price.",
+          video:{cap:"Adding products and price books (video slot ready)."},
+          body:`
+          <h2>Products &amp; Price Books</h2>
+          <ul>
+            <li>A <b>Product</b> is something you sell. <b>Price Books</b> hold product prices (Standard + custom price books for segments/regions).</li>
+            <li><b>Opportunity Products (Line Items)</b> link products + price book entries to an Opportunity.</li>
+          </ul>
+          <h2>Quotes</h2>
+          <p>A <b>Quote</b> is generated from Opportunity Products and can be sent to the customer; syncing keeps Quote and Opportunity aligned.</p>`
+        },
+        { id:"campaign", title:"Campaigns & marketing",
+          lede:"Tracking marketing efforts and measuring ROI.",
+          video:{cap:"Campaigns and campaign members (video slot ready)."},
+          body:`
+          <h2>Campaigns</h2>
+          <p>A <b>Campaign</b> groups marketing activities. <b>Campaign Members</b> are the leads/contacts targeted. You can associate influenced Opportunities to measure ROI.</p>
+          <ul>
+            <li><b>Campaign influence</b> attributes revenue to campaigns.</li>
+            <li>Mass email and <b>Web-to-Lead</b> feed campaigns.</li>
+          </ul>`
+        },
+        { id:"forecast", title:"Forecasting & territory management",
+          lede:"Predicting revenue and aligning accounts to the right reps.",
+          video:{cap:"Collaborative forecasting and territories (video slot ready)."},
+          body:`
+          <h2>Forecasts</h2>
+          <p><b>Collaborative forecasting</b> rolls up Opportunity amounts by stage/owner. Forecasts are built from opportunities, not leads.</p>
+          <h2>Territory management</h2>
+          <p>Assigns accounts and opportunities to <b>territories</b> based on criteria (region, industry, size), so multiple reps can work the same account structure without ownership conflicts.</p>`
+        }
+      ]
+    },
+    {
+      title:"4. Service & Support Applications (10%)",
+      lessons:[
+        { id:"case", title:"Cases & support process",
+          lede:"Tracking customer issues from intake to resolution.",
+          video:{cap:"Case lifecycle and support process (video slot ready)."},
+          body:`
+          <h2>Cases</h2>
+          <p>A <b>Case</b> is a customer issue/ticket. The <b>support process</b> defines the available <b>Status</b> values (record-type dependent).</p>
+          <h2>Intake channels</h2>
+          <ul>
+            <li><b>Web-to-Case</b>, <b>Email-to-Case</b> (and On-Demand Email-to-Case), Omni-Channel, phone.</li>
+          </ul>
+          ${diagramCase()}`
+        },
+        { id:"caseauto", title:"Case automation & routing",
+          lede:"Getting cases to the right place fast and on time.",
+          video:{cap:"Assignment, auto-response, and escalation rules (video slot ready)."},
+          body:`
+          <h2>Rule types</h2>
+          <ul>
+            <li><b>Case Assignment Rules</b> — route new cases to queues/owners by criteria.</li>
+            <li><b>Auto-Response Rules</b> — send automatic replies to customers.</li>
+            <li><b>Escalation Rules</b> — escalate cases not closed/updated in time.</li>
+          </ul>
+          <div class="callout exam"><b>Distinguish:</b> assignment = who works it; auto-response = customer acknowledgement; escalation = time-based bump-up.</div>`
+        },
+        { id:"entitle", title:"Entitlements, SLAs & milestones",
+          lede:"Honoring support agreements with measurable service levels.",
+          video:{cap:"Entitlements and milestone tracking (video slot ready)."},
+          body:`
+          <h2>Entitlements</h2>
+          <p>An <b>Entitlement</b> represents a customer's support agreement (e.g. "Gold = 24h response"). Linked to Accounts/Contacts and to Cases.</p>
+          <h2>Milestones</h2>
+          <p>Define <b>time-based service levels</b> (first response, resolution). Milestones track whether SLAs are met and can trigger escalation.</p>`
+        },
+        { id:"knowledge", title:"Knowledge & articles",
+          lede:"A searchable library that deflects cases and empowers agents.",
+          video:{cap:"Knowledge articles, categories, and data categories (video slot ready)."},
+          body:`
+          <h2>Knowledge</h2>
+          <p><b>Articles</b> are reusable answers. They go through a lifecycle (Draft → Published → Archived) and are organized with <b>Data Categories</b> for visibility and search.</p>
+          <ul>
+            <li>Article <b>Types</b> define their structure.</li>
+            <li>Channel display lets articles appear in Experience Cloud / mobile.</li>
+          </ul>`
+        },
+        { id:"serviceprod", title:"Macros, quick text & Service Console",
+          lede:"Agent productivity tooling.",
+          video:{cap:"Macros and the Service Console (video slot ready)."},
+          body:`
+          <h2>Macros</h2>
+          <p>Chain repetitive actions (update field + send email + add note) into one click for agents.</p>
+          <h2>Quick Text</h2>
+          <p>Reusable message snippets inserted into emails/chats.</p>
+          <h2>Service Console</h2>
+          <p>A multi-tab agent workspace (cases, related records, Omni-Channel) for efficient support work.</p>`
+        }
+      ]
+    },
+    {
+      title:"5. Productivity & Collaboration (10%)",
+      lessons:[
+        { id:"chatter", title:"Chatter & collaboration",
+          lede:"Social collaboration inside the org and with external partners.",
+          video:{cap:"Chatter groups and feeds (video slot ready)."},
+          body:`
+          <h2>Chatter basics</h2>
+          <p><b>Chatter</b> is the internal social network: profiles, feeds, groups, following records/people, and posts/comments. Files shared in Chatter are governed by Chatter Files.</p>
+          <h2>External users</h2>
+          <p>Invite <b>Customers</b> and <b>Partners</b> to specific Chatter groups (not full CRM users) for collaboration.</p>`
+        },
+        { id:"mobile", title:"Mobile app setup & branding",
+          lede:"Configuring the Salesforce mobile experience.",
+          video:{cap:"Mobile app branding and navigation (video slot ready)."},
+          body:`
+          <h2>Salesforce mobile app</h2>
+          <p>Configure via <b>Mobile App Settings</b>: branding (colors/logo), <b>launchpad</b> (quick actions), and which objects/tabs appear. <b>Offline</b> access is available for some objects.</p>
+          <div class="callout exam"><b>Note:</b> mobile navigation is set in the mobile app, not the desktop app menu.</div>`
+        },
+        { id:"actions", title:"Activities, global & quick actions",
+          lede:"Tasks, events, and actions that speed up work.",
+          video:{cap:"Global vs object-specific quick actions (video slot ready)."},
+          body:`
+          <h2>Activities</h2>
+          <p><b>Tasks</b> (to-do) and <b>Events</b> (calendar meetings) are Activity objects. Email integration (e.g. Outlook/Gmail) logs email to records.</p>
+          <h2>Actions</h2>
+          <ul>
+            <li><b>Global actions</b> — available anywhere (e.g. Log a Call).</li>
+            <li><b>Object-specific actions</b> — shown on a record's page layout.</li>
+            <li>Both appear in the mobile app's action bar.</li>
+          </ul>`
+        },
+        { id:"appex", title:"AppExchange & packages",
+          lede:"Extending the org with third-party and custom-delivered components.",
+          video:{cap:"Installing from AppExchange (video slot ready)."},
+          body:`
+          <h2>Packages</h2>
+          <ul>
+            <li><b>Unmanaged</b> — editable by the installer, not upgradeable by the publisher (good for templates you own).</li>
+            <li><b>Managed</b> — locked, upgradeable by the publisher (commercial apps from AppExchange).</li>
+          </ul>
+          <div class="callout exam"><b>Remember:</b> managed packages can't be edited by the installer; unmanaged can.</div>`
+        }
+      ]
+    },
+    {
+      title:"6. Data & Analytics Management (17%)",
+      lessons:[
+        { id:"import", title:"Data import & export",
+          lede:"Getting data in and out correctly and at volume.",
+          video:{cap:"Data Import Wizard vs Data Loader (video slot ready)."},
+          body:`
+          <h2>Two tools</h2>
+          <ul>
+            <li><b>Data Import Wizard</b> — simple UI imports of up to ~50k records (common objects).</li>
+            <li><b>Data Loader</b> — desktop app / API for large volumes (upsert, export, delete, bulk).</li>
+          </ul>
+          <h2>Export</h2>
+          <p><b>Data Export</b> (weekly/monthly) backs up org data. <b>Data Loader</b> exports on demand via API.</p>
+          <div class="callout exam"><b>Upsert</b> needs an <b>external ID</b> field to match existing records. Data Loader handles >50k; the wizard doesn't.</div>`
+        },
+        { id:"dq", title:"Data quality & duplicate management",
+          lede:"Stopping bad and duplicate data at the source.",
+          video:{cap:"Duplicate & matching rules (video slot ready)."},
+          body:`
+          <h2>Validation rules</h2>
+          <p>Block invalid saves (covered in Object Manager) — your first line of data quality.</p>
+          <h2>Duplicate management</h2>
+          <ul>
+            <li><b>Matching Rules</b> define how duplicates are identified (e.g. same name + email).</li>
+            <li><b>Duplicate Rules</b> use matching rules to warn/block on create/edit.</li>
+          </ul>
+          <div class="callout tip">Matching rule = the "what counts as a duplicate" logic; duplicate rule = the "what to do about it" action.</div>`
+        },
+        { id:"reports", title:"Reports fundamentals",
+          lede:"Building the questions leadership asks of the data.",
+          video:{cap:"Report Builder — filters, groupings, buckets, cross-filters (video slot ready)."},
+          body:`
+          <h2>Report types</h2>
+          <p>Tabular (list), Summary (grouped + subtotals), Matrix (groups on rows &amp; columns), and Joined (multiple blocks). Choose by what the user needs.</p>
+          <h2>Building blocks</h2>
+          <ul>
+            <li><b>Filters</b> (field = value; filter logic AND/OR).</li>
+            <li><b>Groupings</b> for summary/matrix reports.</li>
+            <li><b>Bucket fields</b> — group ranges/categories without a new field.</li>
+            <li><b>Cross-filters</b> — include/exclude records with (or without) related records meeting criteria.</li>
+          </ul>
+          ${diagramReports()}`
+        },
+        { id:"dash", title:"Dashboards",
+          lede:"Visualizing report data for at-a-glance insight.",
+          video:{cap:"Dashboard components and running user (video slot ready)."},
+          body:`
+          <h2>Components</h2>
+          <p>Dashboards are built from <b>reports</b> as components: charts (bar, pie, line, funnel), gauges, tables, metrics, and Visualforce. A dashboard can have up to 20 components.</p>
+          <h2>Running user</h2>
+          <ul>
+            <li><b>Static</b> running user — everyone sees data that user can see (common for exec dashboards).</li>
+            <li><b>Dynamic</b> dashboard — runs as the <b>viewer</b>, respecting their permissions (limited number per org).</li>
+          </ul>
+          ${diagramDashboard()}`
+        },
+        { id:"advrpt", title:"Advanced reporting",
+          lede:"Joined reports and historical trending.",
+          video:{cap:"Joined reports and historical trending (video slot ready)."},
+          body:`
+          <h2>Joined reports</h2>
+          <p>Combine <b>multiple report types</b> as side-by-side blocks sharing common dimensions — e.g. Opportunities and Cases for an account.</p>
+          <h2>Historical trending &amp; reporting snapshots</h2>
+          <p>Capture data over time: <b>analytical snapshots</b> store row copies on a schedule; historical trending reports show field values across past dates.</p>`
+        },
+        { id:"listview", title:"List views & folder sharing",
+          lede:"Everyday views and controlling who sees what report.",
+          video:{cap:"List views and report folder sharing (video slot ready)."},
+          body:`
+          <h2>List views</h2>
+          <p>Filtered views of object records (e.g. "My Open Opportunities"). Can be <b>shared</b> with roles/groups/all users, and set as the default for a profile.</p>
+          <h2>Folder sharing</h2>
+          <p>Reports and dashboards live in <b>folders</b> with their own sharing (roles, public groups, individuals). "My Personal Custom Reports" is private to you.</p>`
+        }
+      ]
+    },
+    {
+      title:"7. Automation (15%)",
+      lessons:[
+        { id:"autoot", title:"Automation overview & order of execution",
+          lede:"The tools and the save sequence that governs them.",
+          video:{cap:"Order of execution walkthrough (video slot ready)."},
+          body:`
+          <h2>Tools</h2>
+          <ul>
+            <li><b>Flow</b> (the go-forward tool) — most automation.</li>
+            <li><b>Process Builder / Workflow</b> — legacy; Salesforce is retiring them in favor of Flow.</li>
+            <li><b>Approval Processes</b> — structured multi-step approvals.</li>
+          </ul>
+          <h2>Order of execution</h2>
+          <p>On save, Salesforce runs: system validations → <b>before-save</b> automations (flows, PB) → duplicate rules → <b>after-save</b> automations → assignment rules → etc. Understanding it prevents "why didn't my automation fire?" confusion.</p>`
+        },
+        { id:"flow", title:"Flow types & Flow Builder",
+          lede:"The declarative automation engine.",
+          video:{cap:"Flow Builder canvas and elements (video slot ready)."},
+          body:`
+          <h2>Flow types</h2>
+          <ul>
+            <li><b>Screen flow</b> — guided UI for users.</li>
+            <li><b>Record-triggered flow</b> — runs on create/update of a record.</li>
+            <li><b>Scheduled flow</b> — runs on a schedule.</li>
+            <li><b>Autolaunched</b> — called by other automation (no UI).</li>
+            <li><b>Platform Event / Orchestrator</b> — advanced.</li>
+          </ul>
+          <h2>Elements</h2>
+          <p>Build with elements: <b>Get/Pause/Create/Update/Delete</b> (data), <b>Decision</b> (branching), <b>Loop</b>, <b>Assignment</b> (variables/collections), <b>Screen</b>.</p>
+          ${diagramFlow()}`
+        },
+        { id:"rtflow", title:"Record-triggered flows (before/after save)",
+          lede:"The most-used flow and its performance nuance.",
+          video:{cap:"Before vs after save record-triggered flow (video slot ready)."},
+          body:`
+          <h2>Before-save (fast field updates)</h2>
+          <p>Runs <b>in the save transaction</b> before the record is committed. Best for setting field values — no extra DML, very fast.</p>
+          <h2>After-save</h2>
+          <p>Runs after commit; needed when you create/update <b>related</b> records or call actions that require the record to exist.</p>
+          <div class="callout exam"><b>Performance:</b> prefer before-save for field updates; use after-save only when touching other records.</div>`
+        },
+        { id:"approval", title:"Approval processes",
+          lede:"Structured, multi-step sign-off.",
+          video:{cap:"Building an approval process (video slot ready)."},
+          body:`
+          <h2>Anatomy</h2>
+          <p>An <b>approval process</b> defines entry criteria, <b>steps</b> (approver + criteria), <b>actions</b> (field update/email on submit/approve/reject), and <b>final approval/rejection</b> behavior.</p>
+          <ul>
+            <li>Approvers can be users, queues, or role hierarchy-based.</li>
+            <li>Often launched from a Flow or a button; can have multiple steps.</li>
+          </ul>`
+        },
+        { id:"legacyauto", title:"Process Builder & Workflow (legacy)",
+          lede:"Know them for the exam even though Flow replaces them.",
+          video:{cap:"Why Flow replaces Process Builder/Workflow (video slot ready)."},
+          body:`
+          <h2>What they were</h2>
+          <ul>
+            <li><b>Workflow</b> — rules with field updates, emails, tasks, outbound messages (no branching logic beyond criteria).</li>
+            <li><b>Process Builder</b> — point-and-click with multiple criteria/actions (being retired).</li>
+          </ul>
+          <div class="callout exam"><b>Exam reality:</b> you may be asked to <b>migrate</b> these to Flow. Flow is the strategic tool; new automation should use Flow.</div>`
+        },
+        { id:"defuser", title:"Default automation user & troubleshooting",
+          lede:"Who the automation runs as, and how to fix it.",
+          video:{cap:"Debugging a failed flow run (video slot ready)."},
+          body:`
+          <h2>Default automation user</h2>
+          <p>Background automation can run as the <b>Default Workflow User</b> (or a specified user), which affects record ownership/permissions and avoids "insufficient privileges" errors.</p>
+          <h2>Troubleshooting</h2>
+          <ul>
+            <li><b>Flow fault paths</b> and <b>debug</b> runs show where a flow failed.</li>
+            <li><b>Setup Audit Trail</b> and debug logs help trace issues.</li>
+            <li>Check the <b>order of execution</b> when automations conflict.</li>
           </ul>`
         }
       ]
     },
     {
-      title:"3. What Users Can Do — Profiles & Permission Sets",
+      title:"8. Agentforce (8%)",
       lessons:[
-        { id:"profiles", title:"Profiles (baseline permissions)",
-          lede:"The profile defines the floor of what a user can access and do.",
-          video:{cap:"Anatomy of a profile — object perms, FLS, tabs, apps (video slot ready)."},
+        { id:"agentwhat", title:"What is Agentforce?",
+          lede:"The newest exam domain — autonomous AI agents.",
+          video:{cap:"Agents vs bots — Agentforce explained (video slot ready)."},
           body:`
-          <h2>What a profile controls</h2>
-          <ul>
-            <li><b>Object permissions</b> — create/read/edit/delete per object.</li>
-            <li><b>Field-level security (FLS)</b> — which fields a user can see or edit.</li>
-            <li><b>Tab visibility</b> — default on / default off / hidden.</li>
-            <li><b>App visibility</b> and assigned <b>connected apps</b>.</li>
-            <li><b>Page layouts</b> and <b>record types</b> (via the profile).</li>
-            <li><b>Login hours &amp; IP ranges</b> (can also live here).</li>
-          </ul>
-          <div class="callout tip"><b>Profiles vs permission sets:</b> a user has <b>one</b> profile but can have
-          <b>many</b> permission sets. Use the profile for the job's baseline; use permission sets for
-          exceptions and additive rights.</div>
-          ${diagramAccess()}`
+          <h2>Agents, not bots</h2>
+          <p><b>Agentforce</b> deploys <b>autonomous AI agents</b> that reason, take actions, and complete tasks (e.g. service rep, sales coach) — distinct from scripted chatbots. Agents use LLMs plus configured <b>topics</b> and <b>actions</b>.</p>
+          <div class="callout exam"><b>Newest domain (8%):</b> expect conceptual questions — what agents are, how they're built, and how they're governed — not deep coding.</div>`
         },
-        { id:"permsets", title:"Permission Sets & Permission Set Groups",
-          lede:"Add rights without cloning profiles — the modern, recommended approach.",
-          video:{cap:"Layering a permission set on top of a profile (video slot ready)."},
+        { id:"agentbuild", title:"Agent Builder — topics & actions",
+          lede:"How an agent is assembled.",
+          video:{cap:"Building an agent in Agent Builder (video slot ready)."},
           body:`
-          <h2>Permission sets</h2>
-          <p>A <b>permission set</b> grants additional permissions (objects, FLS, apps, system perms) on top of
-          a user's profile. They are <b>additive</b> and let you grant specific access to a subset of users
-          without maintaining many profiles.</p>
-          <h2>Permission set groups</h2>
-          <p>A <b>permission set group</b> bundles multiple permission sets so you assign one group instead of
-          several individual sets — easier to manage and audit.</p>
-          <div class="callout"><b>Exam pattern:</b> "Only the deal-desk team needs Delete on Opportunities."
-          &rarr; keep the profile read/write, add a permission set with Delete on Opportunity to those users.</div>`
-        }
-      ]
-    },
-    {
-      title:"4. What Users Can See — Record Sharing",
-      lessons:[
-        { id:"roles", title:"Roles & Role Hierarchy",
-          lede:"How the role hierarchy opens record visibility up the chain.",
-          video:{cap:"Building a role hierarchy funnel (video slot ready)."},
-          body:`
-          <h2>Roles control record visibility, not permissions</h2>
-          <p>A <b>role</b> places a user in the <b>role hierarchy</b>. Users can see records owned by themselves
-          and by anyone <b>below</b> them in the hierarchy. Roles do <b>not</b> grant object/field permissions —
-          that is the profile's job.</p>
+          <h2>Topics &amp; actions</h2>
           <ul>
-            <li>Roles are about <b>records you can see</b>; profiles are about <b>what you can do</b>.</li>
-            <li>Role hierarchy grants <b>implicit</b> access upward; it does not restrict downward.</li>
+            <li><b>Topics</b> — the categories of work an agent handles, with instructions and classification.</li>
+            <li><b>Actions</b> — what the agent can do (call a flow, use a prompt/AI model, query data).</li>
           </ul>
-          ${diagramRoles()}`
+          <h2>Grounding</h2>
+          <p>Agents reason over your <b>data</b> and connected actions; you configure which are available and how they're described.</p>`
         },
-        { id:"owd", title:"Organization-Wide Defaults (OWD)",
-          lede:"The starting point for record sharing — restrict first, open up selectively.",
-          video:{cap:"Setting OWD to Private vs Public Read Only (video slot ready)."},
+        { id:"agentgov", title:"Permissions, testing & deployment",
+          lede:"Keeping agents safe and correct.",
+          video:{cap:"Agent permissions, preview testing, and activation (video slot ready)."},
           body:`
-          <h2>OWD = the baseline</h2>
-          <p><b>Organization-Wide Defaults</b> set the <i>most restrictive</i> default access for each object
-          (Private, Public Read Only, Public Read/Write). Everything else (roles, sharing rules, manual share,
-          teams) only <b>opens up</b> from this baseline.</p>
+          <h2>Permissions &amp; security</h2>
+          <p>Agents require proper <b>permissions</b> (who can build/use them) and respect the org's <b>sharing/security</b> when acting on data. Responsible-AI and data governance apply.</p>
+          <h2>Test before you ship</h2>
           <ul>
-            <li><b>Private</b> — only owner and above-them roles see the record.</li>
-            <li><b>Public Read Only</b> — all users see; only owner edits.</li>
-            <li><b>Public Read/Write</b> — all users can edit.</li>
+            <li>Use <b>Agent Builder's conversation preview</b> and light testing before release.</li>
+            <li>Deploy via change sets / DevOps like other metadata.</li>
           </ul>
-          <div class="callout tip"><b>Best practice:</b> set OWD as restrictive as the business allows, then grant
-          access with roles/sharing rules. "Secure by default."</div>`
-        },
-        { id:"sharing", title:"Sharing Rules, Manual Share & Teams",
-          lede:"Opening records beyond the role hierarchy — automatically and on demand.",
-          video:{cap:"A criteria-based sharing rule opening records to a public group (video slot ready)."},
-          body:`
-          <h2>Sharing rules</h2>
-          <p>A <b>sharing rule</b> grants access to records users don't own, based on <b>ownership</b> (owner in
-          X role/group) or <b>criteria</b> (field values, e.g. Region = APAC). They only <b>extend</b> beyond
-          the OWD — you cannot use a sharing rule to make things more private.</p>
-          <ul>
-            <li>Sharing rules grant access to <b>roles, public groups, or territories</b>, not individuals directly.</li>
-            <li>They run one-way: from a more restrictive to a less restrictive setting.</li>
-          </ul>
-          <h2>Manual sharing &amp; teams</h2>
-          <ul>
-            <li><b>Manual sharing</b> — a record owner shares a single record with specific users/roles/groups.</li>
-            <li><b>Account/Case Teams</b> — collaborate by granting a team of users access to a record.</li>
-          </ul>
-          ${diagramSharing()}`
-        }
-      ]
-    },
-    {
-      title:"5. Put It Together & Practice",
-      lessons:[
-        { id:"scenario", title:"Scenario walkthrough",
-          lede:"A worked example mapping a business requirement to the right access design.",
-          video:{cap:"Whiteboard: a deal-desk + APAC visibility requirement (video slot ready)."},
-          body:`
-          <h2>Requirement</h2>
-          <p>"APAC sales reps should see all APAC accounts and edit their own; deal-desk analysts (any region)
-          need Delete on Opportunities; managers must see their team's pipelines."</p>
-          <h2>Design</h2>
-          <ul>
-            <li><b>Profile</b> (Sales Rep): Read/Write on Account &amp; Opportunity, no Delete.</li>
-            <li><b>OWD</b>: Account &amp; Opportunity = <b>Private</b> (restrictive baseline).</li>
-            <li><b>Role hierarchy</b>: managers above reps &rarr; managers see team records automatically.</li>
-            <li><b>Sharing rule (criteria)</b>: Account Region = APAC &rarr; share with "APAC Sales" public group (Read/Write).</li>
-            <li><b>Permission set</b>: "Deal Desk Delete" &rarr; assign Delete on Opportunity to deal-desk analysts only.</li>
-          </ul>
-          <div class="callout"><b>Result:</b> baseline is private, roles open manager visibility, a sharing rule
-          opens APAC accounts, and a permission set adds the narrow Delete right. Each layer does one job.</div>
-          <p>Pair this with the practice exam: <a href="https://manicminerwd.github.io/salesforce-admin-practice-exam/" target="_blank" rel="noopener">Salesforce Admin practice exam &rarr;</a></p>`
-        },
-        { id:"summary", title:"Key takeaways & exam checklist",
-          lede:"The mental model to carry into the exam.",
-          video:{cap:"Recap of the layered model (video slot ready)."},
-          body:`
-          <h2>The layered model (memorize this)</h2>
-          <ul>
-            <li><b>Profile</b> = baseline of what you can do (objects, FLS, tabs, apps). One per user.</li>
-            <li><b>Permission set</b> = additive rights. Many per user. Group them with permission set groups.</li>
-            <li><b>Role</b> = where you sit in the hierarchy; opens record visibility upward.</li>
-            <li><b>OWD</b> = the restrictive baseline for record visibility.</li>
-            <li><b>Sharing rules</b> = open records beyond OWD (ownership or criteria based), never more private.</li>
-            <li><b>Manual share / teams</b> = one-off or collaborative access to specific records.</li>
-            <li><b>Login hours / IP ranges / MFA</b> = authentication controls.</li>
-          </ul>
-          <div class="callout tip"><b>One-line summary:</b> Profiles &amp; permission sets decide <i>what you can do</i>;
-          roles, OWD, and sharing rules decide <i>what you can see</i>.</div>`
+          <div class="callout tip">Treat agents like any other automation: test, govern, and document before activating.</div>`
         }
       ]
     }
   ]
 };
 
-/* ---------------- Diagrams (inline SVG) ---------------- */
+/* ---------------- Diagrams ---------------- */
 function diagramLogin(){
   return `<div class="diagram"><svg viewBox="0 0 640 200" role="img" aria-label="Login controls diagram">
     <rect x="20" y="40" width="150" height="60" rx="10" fill="#172033" stroke="#00a1e0"/>
@@ -343,7 +691,7 @@ function diagramAccess(){
     <line x1="220" y1="150" x2="250" y2="165" stroke="#1ec9a7" stroke-width="2"/>
     <line x1="430" y1="70" x2="470" y2="95" stroke="#f59e0b" stroke-width="2"/>
     <line x1="430" y1="165" x2="470" y2="135" stroke="#f59e0b" stroke-width="2"/>
-  </svg><div class="dlabel">Authorization layer: profile is the floor; permission sets stack on top (additive).</div></div>`;
+  </svg><div class="dlabel">Authorization: profile is the floor; permission sets stack additively.</div></div>`;
 }
 function diagramRoles(){
   return `<div class="diagram"><svg viewBox="0 0 640 220" role="img" aria-label="Role hierarchy">
@@ -391,11 +739,139 @@ function diagramSharing(){
     <line x1="430" y1="175" x2="490" y2="130" stroke="#1ec9a7" stroke-width="2"/>
   </svg><div class="dlabel">Record visibility: OWD is the floor; roles, sharing rules, and manual share only open it up.</div></div>`;
 }
+function diagramRelationships(){
+  return `<div class="diagram"><svg viewBox="0 0 640 210" role="img" aria-label="Relationship types">
+    <rect x="40" y="70" width="150" height="70" rx="10" fill="#172033" stroke="#00a1e0"/>
+    <text x="115" y="100" fill="#e8edf7" font-size="13" text-anchor="middle">Account</text>
+    <text x="115" y="120" fill="#9aa7c0" font-size="11" text-anchor="middle">(parent)</text>
+    <rect x="450" y="30" width="150" height="60" rx="10" fill="#172033" stroke="#1ec9a7"/>
+    <text x="525" y="56" fill="#e8edf7" font-size="13" text-anchor="middle">Contact</text>
+    <text x="525" y="74" fill="#9aa7c0" font-size="11" text-anchor="middle">lookup</text>
+    <rect x="450" y="120" width="150" height="60" rx="10" fill="#172033" stroke="#f59e0b"/>
+    <text x="525" y="146" fill="#e8edf7" font-size="13" text-anchor="middle">Opportunity</text>
+    <text x="525" y="164" fill="#9aa7c0" font-size="11" text-anchor="middle">master-detail</text>
+    <line x1="190" y1="95" x2="450" y2="60" stroke="#1ec9a7" stroke-width="2"/>
+    <line x1="190" y1="105" x2="450" y2="150" stroke="#f59e0b" stroke-width="2"/>
+    <text x="320" y="40" fill="#9aa7c0" font-size="11" text-anchor="middle">Lookup: child stands alone</text>
+    <text x="320" y="190" fill="#9aa7c0" font-size="11" text-anchor="middle">Master-Detail: child inherits sharing, enables roll-up</text>
+  </svg><div class="dlabel">Relationships: lookup (loose) vs master-detail (tight, shares security, allows roll-ups).</div></div>`;
+}
+function diagramFormula(){
+  return `<div class="diagram"><svg viewBox="0 0 640 200" role="img" aria-label="Formula vs roll-up">
+    <rect x="30" y="40" width="200" height="80" rx="10" fill="#172033" stroke="#00a1e0"/>
+    <text x="130" y="70" fill="#e8edf7" font-size="13" text-anchor="middle">Formula field</text>
+    <text x="130" y="90" fill="#9aa7c0" font-size="11" text-anchor="middle">same record calc</text>
+    <text x="130" y="108" fill="#9aa7c0" font-size="11" text-anchor="middle">IF(Price>100,...)</text>
+    <rect x="410" y="40" width="200" height="120" rx="10" fill="#172033" stroke="#1ec9a7"/>
+    <text x="510" y="66" fill="#e8edf7" font-size="13" text-anchor="middle">Roll-Up Summary</text>
+    <text x="510" y="86" fill="#9aa7c0" font-size="11" text-anchor="middle">on MASTER</text>
+    <text x="510" y="104" fill="#9aa7c0" font-size="11" text-anchor="middle">SUM of child Amounts</text>
+    <text x="510" y="124" fill="#9aa7c0" font-size="11" text-anchor="middle">needs master-detail</text>
+    <rect x="250" y="40" width="140" height="80" rx="10" fill="#0f1424" stroke="#283248"/>
+    <text x="320" y="84" fill="#9aa7c0" font-size="12" text-anchor="middle">child records</text>
+    <line x1="390" y1="100" x2="410" y2="90" stroke="#1ec9a7" stroke-width="2"/>
+  </svg><div class="dlabel">Formula = same-row value; Roll-Up = aggregate of related child records (master-detail only).</div></div>`;
+}
+function diagramSales(){
+  return `<div class="diagram"><svg viewBox="0 0 660 150" role="img" aria-label="Lead to opportunity">
+    <rect x="20" y="50" width="120" height="55" rx="10" fill="#172033" stroke="#00a1e0"/>
+    <text x="80" y="82" fill="#e8edf7" font-size="13" text-anchor="middle">Lead</text>
+    <rect x="200" y="50" width="130" height="55" rx="10" fill="#172033" stroke="#1ec9a7"/>
+    <text x="265" y="74" fill="#e8edf7" font-size="12" text-anchor="middle">Account +</text>
+    <text x="265" y="92" fill="#e8edf7" font-size="12" text-anchor="middle">Contact</text>
+    <rect x="400" y="50" width="140" height="55" rx="10" fill="#172033" stroke="#f59e0b"/>
+    <text x="470" y="74" fill="#e8edf7" font-size="12" text-anchor="middle">Opportunity</text>
+    <text x="470" y="92" fill="#9aa7c0" font-size="11" text-anchor="middle">stages → Won</text>
+    <rect x="580" y="50" width="70" height="55" rx="10" fill="#0f1424" stroke="#283248"/>
+    <text x="615" y="82" fill="#9aa7c0" font-size="12" text-anchor="middle">Quote</text>
+    <line x1="140" y1="77" x2="200" y2="77" stroke="#00a1e0" stroke-width="2"/>
+    <line x1="330" y1="77" x2="400" y2="77" stroke="#1ec9a7" stroke-width="2"/>
+    <line x1="540" y1="77" x2="580" y2="77" stroke="#f59e0b" stroke-width="2"/>
+    <text x="170" y="40" fill="#9aa7c0" font-size="10">convert</text>
+    <text x="370" y="40" fill="#9aa7c0" font-size="10">create</text>
+  </svg><div class="dlabel">Sales path: Lead → (convert) Account/Contact → Opportunity (staged) → Quote.</div></div>`;
+}
+function diagramCase(){
+  return `<div class="diagram"><svg viewBox="0 0 660 150" role="img" aria-label="Case lifecycle">
+    <rect x="20" y="50" width="120" height="55" rx="10" fill="#172033" stroke="#00a1e0"/>
+    <text x="80" y="82" fill="#e8edf7" font-size="13" text-anchor="middle">New Case</text>
+    <rect x="190" y="50" width="130" height="55" rx="10" fill="#172033" stroke="#1ec9a7"/>
+    <text x="255" y="74" fill="#e8edf7" font-size="12" text-anchor="middle">Assigned</text>
+    <text x="255" y="92" fill="#9aa7c0" font-size="11" text-anchor="middle">(queue/owner)</text>
+    <rect x="370" y="50" width="130" height="55" rx="10" fill="#172033" stroke="#f59e0b"/>
+    <text x="435" y="74" fill="#e8edf7" font-size="12" text-anchor="middle">In Progress</text>
+    <text x="435" y="92" fill="#9aa7c0" font-size="11" text-anchor="middle">(SLA milestone)</text>
+    <rect x="550" y="50" width="100" height="55" rx="10" fill="#0f1424" stroke="#283248"/>
+    <text x="600" y="82" fill="#9aa7c0" font-size="12" text-anchor="middle">Closed</text>
+    <line x1="140" y1="77" x2="190" y2="77" stroke="#00a1e0" stroke-width="2"/>
+    <line x1="320" y1="77" x2="370" y2="77" stroke="#1ec9a7" stroke-width="2"/>
+    <line x1="500" y1="77" x2="550" y2="77" stroke="#f59e0b" stroke-width="2"/>
+  </svg><div class="dlabel">Case lifecycle driven by the support process (status values) + assignment/escalation rules.</div></div>`;
+}
+function diagramReports(){
+  return `<div class="diagram"><svg viewBox="0 0 660 170" role="img" aria-label="Report building blocks">
+    <rect x="20" y="20" width="150" height="50" rx="8" fill="#172033" stroke="#00a1e0"/>
+    <text x="95" y="50" fill="#e8edf7" font-size="12" text-anchor="middle">Report Type</text>
+    <rect x="20" y="100" width="150" height="50" rx="8" fill="#172033" stroke="#1ec9a7"/>
+    <text x="95" y="130" fill="#e8edf7" font-size="12" text-anchor="middle">Filters</text>
+    <rect x="250" y="60" width="160" height="50" rx="8" fill="#172033" stroke="#f59e0b"/>
+    <text x="330" y="90" fill="#e8edf7" font-size="12" text-anchor="middle">Groupings</text>
+    <rect x="450" y="20" width="170" height="50" rx="8" fill="#172033" stroke="#283248"/>
+    <text x="535" y="50" fill="#e8edf7" font-size="12" text-anchor="middle">Buckets</text>
+    <rect x="450" y="100" width="170" height="50" rx="8" fill="#172033" stroke="#283248"/>
+    <text x="535" y="130" fill="#e8edf7" font-size="12" text-anchor="middle">Cross-filters</text>
+    <rect x="20" y="60" width="150" height="20" rx="0" fill="#0f1424"/>
+    <text x="330" y="150" fill="#9aa7c0" font-size="11" text-anchor="middle">→ Tabular / Summary / Matrix / Joined</text>
+    <line x1="170" y1="45" x2="250" y2="85" stroke="#00a1e0" stroke-width="2"/>
+    <line x1="170" y1="125" x2="250" y2="85" stroke="#00a1e0" stroke-width="2"/>
+  </svg><div class="dlabel">Report anatomy: type + filters → groupings → buckets/cross-filters, rendered as a chosen format.</div></div>`;
+}
+function diagramDashboard(){
+  return `<div class="diagram"><svg viewBox="0 0 660 160" role="img" aria-label="Dashboard components">
+    <rect x="20" y="30" width="180" height="50" rx="8" fill="#172033" stroke="#00a1e0"/>
+    <text x="110" y="60" fill="#e8edf7" font-size="12" text-anchor="middle">Reports (sources)</text>
+    <rect x="270" y="30" width="160" height="50" rx="8" fill="#172033" stroke="#1ec9a7"/>
+    <text x="350" y="54" fill="#e8edf7" font-size="12" text-anchor="middle">Dashboard</text>
+    <text x="350" y="72" fill="#9aa7c0" font-size="11" text-anchor="middle">≤20 components</text>
+    <rect x="490" y="10" width="140" height="34" rx="8" fill="#172033" stroke="#f59e0b"/>
+    <text x="560" y="32" fill="#e8edf7" font-size="11" text-anchor="middle">chart</text>
+    <rect x="490" y="54" width="140" height="34" rx="8" fill="#172033" stroke="#f59e0b"/>
+    <text x="560" y="76" fill="#e8edf7" font-size="11" text-anchor="middle">gauge</text>
+    <rect x="490" y="98" width="140" height="34" rx="8" fill="#172033" stroke="#f59e0b"/>
+    <text x="560" y="120" fill="#e8edf7" font-size="11" text-anchor="middle">table/metric</text>
+    <line x1="200" y1="55" x2="270" y2="55" stroke="#00a1e0" stroke-width="2"/>
+    <line x1="430" y1="55" x2="490" y2="27" stroke="#1ec9a7" stroke-width="2"/>
+    <line x1="430" y1="55" x2="490" y2="71" stroke="#1ec9a7" stroke-width="2"/>
+    <line x1="430" y1="55" x2="490" y2="115" stroke="#1ec9a7" stroke-width="2"/>
+  </svg><div class="dlabel">Dashboards are built from reports; components run as a static or dynamic running user.</div></div>`;
+}
+function diagramFlow(){
+  return `<div class="diagram"><svg viewBox="0 0 660 190" role="img" aria-label="Flow types">
+    <rect x="20" y="20" width="150" height="44" rx="8" fill="#172033" stroke="#00a1e0"/>
+    <text x="95" y="47" fill="#e8edf7" font-size="12" text-anchor="middle">Screen flow</text>
+    <rect x="20" y="76" width="150" height="44" rx="8" fill="#172033" stroke="#1ec9a7"/>
+    <text x="95" y="103" fill="#e8edf7" font-size="12" text-anchor="middle">Record-triggered</text>
+    <rect x="20" y="132" width="150" height="44" rx="8" fill="#172033" stroke="#f59e0b"/>
+    <text x="95" y="159" fill="#e8edf7" font-size="12" text-anchor="middle">Scheduled</text>
+    <rect x="250" y="76" width="160" height="44" rx="8" fill="#172033" stroke="#f59e0b"/>
+    <text x="330" y="103" fill="#e8edf7" font-size="12" text-anchor="middle">Autolaunched</text>
+    <rect x="460" y="20" width="170" height="50" rx="8" fill="#172033" stroke="#283248"/>
+    <text x="545" y="50" fill="#e8edf7" font-size="12" text-anchor="middle">Get / Create</text>
+    <rect x="460" y="90" width="170" height="50" rx="8" fill="#172033" stroke="#283248"/>
+    <text x="545" y="114" fill="#e8edf7" font-size="12" text-anchor="middle">Decision / Loop</text>
+    <rect x="460" y="150" width="170" height="34" rx="8" fill="#172033" stroke="#283248"/>
+    <text x="545" y="172" fill="#e8edf7" font-size="12" text-anchor="middle">Assignment</text>
+    <text x="340" y="170" fill="#9aa7c0" font-size="11" text-anchor="middle">Elements compose any flow</text>
+    <line x1="410" y1="98" x2="460" y2="45" stroke="#f59e0b" stroke-width="2"/>
+    <line x1="410" y1="98" x2="460" y2="115" stroke="#f59e0b" stroke-width="2"/>
+    <line x1="410" y1="98" x2="460" y2="167" stroke="#f59e0b" stroke-width="2"/>
+  </svg><div class="dlabel">Flow types trigger differently; all are built from the same element palette.</div></div>`;
+}
 
 /* ---------------- State / rendering ---------------- */
 const ALL = [];
 COURSE.sections.forEach(s=>s.lessons.forEach(l=>ALL.push(l)));
-const STORE = "sf_idsec_progress_v1";
+const STORE = "sf_admin_training_progress_v1";
 function loadDone(){ try{ return JSON.parse(localStorage.getItem(STORE)||"{}"); }catch(e){ return {}; } }
 function saveDone(d){ localStorage.setItem(STORE, JSON.stringify(d)); }
 let done = loadDone();
@@ -426,16 +902,13 @@ function findPos(id){ return ALL.findIndex(l=>l.id===id); }
 function render(){
   const l = findLesson(currentId);
   const pos = findPos(currentId);
-  // crumbs + count
   document.getElementById('crumbs').innerHTML = `<b>${COURSE.title}</b>`;
   document.getElementById('lessonCount').textContent = `Lesson ${pos+1} of ${ALL.length}`;
-  // mark active in sidebar
   document.querySelectorAll('.lesson').forEach(el=>el.classList.toggle('active', el.dataset.id===currentId));
-  // content
   const videoHTML = l.video ? `
     <div class="video-slot">
       <div class="player" id="player-${l.id}">
-        <div>[ Video slot &mdash; drop your clip at <code>assets/${l.id}.mp4</code> or paste a YouTube/mp4 URL in <code>index.html</code> &middot; see README ]</div>
+        <div>[ Video slot &mdash; drop your clip at <code>assets/${l.id}.mp4</code> or set <code>VIDEO_SOURCES</code> in index.html. See README. ]</div>
       </div>
       <div class="cap">${l.video.cap}</div>
     </div>` : '';
@@ -458,7 +931,6 @@ function render(){
   document.getElementById('prevBtn').addEventListener('click',()=>{ if(pos>0){ currentId=ALL[pos-1].id; render(); } });
   document.getElementById('nextBtn').addEventListener('click',()=>{ if(pos<ALL.length-1){ currentId=ALL[pos+1].id; render(); } });
   content.scrollIntoView({behavior:'smooth',block:'start'});
-  // attach video if present
   attachVideo(l);
   renderProgress();
 }
@@ -480,7 +952,6 @@ function renderProgress(){
   document.getElementById('progbar').style.width = pct+'%';
   document.getElementById('progtext').textContent = `${completed} / ${total} lessons complete`;
 }
-
 document.getElementById('menuBtn').addEventListener('click',()=>{
   document.getElementById('side').classList.toggle('open');
 });
